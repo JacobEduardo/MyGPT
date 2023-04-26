@@ -1,7 +1,7 @@
 from db import GetConextion
 
-def InsertData():
+def Post(documento):
     collection = GetConextion()
-    documento = {"nombre": "Pedro", "edad": 30}
+    documento = documento
     collection.insert_one(documento)
     print("estas aqui")

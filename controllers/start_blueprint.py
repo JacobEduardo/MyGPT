@@ -1,5 +1,4 @@
 from flask import Blueprint, request, render_template
-from gpt import get_response
 
 start_blueprint = Blueprint('/', __name__)
 

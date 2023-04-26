@@ -9,7 +9,7 @@ openai.api_key = os.getenv('OPENAI_API_KEY')
 def get_response(prompt):
     response = openai.Completion.create(
         model="text-davinci-003",
-        prompt="Say this is a test",
+        prompt=prompt,
         max_tokens=7,
         temperature=0,
         top_p=1,
