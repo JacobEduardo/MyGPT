@@ -1,7 +1,7 @@
-from db import GetConextion
+from models.db import GetCollection
 
 def Post(documento):
-    collection = GetConextion()
+    collection = GetCollection()
     documento = documento
     collection.insert_one(documento)
     print("estas aqui")

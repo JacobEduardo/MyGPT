@@ -17,5 +17,3 @@ def get_response(prompt):
         presence_penalty=0
     )
     return response.choices[0].text
-
-print(get_response("Say this is a test"))

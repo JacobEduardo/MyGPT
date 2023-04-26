@@ -1,5 +1,8 @@
-from db import GetConextion
+from db import GetCollection
 
-def GetDatas():
-    collection = GetConextion()
-    collection.find()
+def GetConversations():
+    collection = GetCollection()
+    allconversations = list(collection.find())
+    return allconversations
+
+print( GetConversations() )

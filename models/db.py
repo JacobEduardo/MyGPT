@@ -10,7 +10,7 @@ client = MongoClient(uri, server_api=ServerApi('1'))
 db = client["MyDbGpt"]
 collection = db["Gpt"]
 
-def GetConextion():
+def GetCollection():
     return collection
 
 
