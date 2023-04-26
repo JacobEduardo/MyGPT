@@ -1,12 +1,10 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template
 from gpt import get_response
 
 questions_blueprint = Blueprint('questions', __name__)
 
 @questions_blueprint.route('/questions', methods=['GET'])
 def say_question():
-    #data = request.json
-    #question = data.get('question', None)
     #return jsonify({"error": "user_id no proporcionado"}), 400
-    return get_response("Say this is a test")
-
+    resultardo = get_response("Say this is a test")
+    return render_template('result.html', resultado=resultardo)
