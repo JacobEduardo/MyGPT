@@ -12,7 +12,3 @@ collection = db["Gpt"]
 
 def GetCollection():
     return collection
-
-
-
-
