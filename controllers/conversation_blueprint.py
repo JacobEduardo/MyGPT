@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify, render_template
-from gpt import get_response
+from gpt import GetResponseGpt, CreateTitle
 from models.get import GetConversations, GetConversation
 from models.post import UpdateDialogue, CreateDialogue
 conversation_blueprint = Blueprint('/conversation', __name__)
@@ -19,15 +19,21 @@ def PostResponse():
     try :
         question = request.form.get('question')
         id = request.form.get('id')
-        conversations = GetConversations()
-        answer = get_response(question)
         if id=="none":
-            id = CreateDialogue(question,answer)
+            if question == "":
+                conversations = GetConversations()
+                return render_template('index.html', conversations=conversations) 
+            answer = GetResponseGpt(question)
+            title = CreateTitle(question,answer)
+            id = CreateDialogue(title,question,answer)
+            conversations = GetConversations()
             conversation = GetConversation(id)
             return render_template('index.html', conversations=conversations , conversation=conversation) 
         else:
+            answer = GetResponseGpt(question)
             UpdateDialogue(id,question,answer)
             conversation = GetConversation(id)
+            conversations = GetConversations()
             return render_template('index.html', conversations=conversations, conversation=conversation) 
     except Exception as e:
         return jsonify({'error': str(e)})

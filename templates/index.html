@@ -15,7 +15,7 @@
     }
 </style>
 
-<div>Esto es arriba</div>
+<div>   <a href="\">Titulo</a><br></div>
 <div class="parent">
     <div class="child_one" style="padding: 10px;">
         {% for element in conversations %}
@@ -27,7 +27,7 @@
         {% if conversation %}
                 {% for element2 in conversation.dialogue %}
                     <p>{{element2.question}}</p>
-                    <p>{{element2.response}}</p>
+                    <p>{{element2.answer}}</p>
                 {% endfor %}
         {% endif %}
         <form action="/conversation" method="post">

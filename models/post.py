@@ -17,18 +17,18 @@ def UpdateDialogue(id, question, answer):
     print("Esta es la conversacion:")
     print(conversation, question, "y la respuesta es;" , answer)
 
-def CreateDialogue(question, answer):
+def CreateDialogue(title, question, answer):
     answer = answer.strip()
     conversation = GetCollection()
-    x = conversation.insert_one({
-        "name":"Esta es la tercera lista",
+    new_dialigue = conversation.insert_one({
+        "name":title,
         "dialogue":[{
             "question":question,
-            "response":answer
+            "answer":answer
             }],
         "resume":"este es un resumen",
         "data": datetime.now()
         })
-    print("Esta es la conversacion:", x)
-    id = x.inserted_id
+    print("Esta es la conversacion:",new_dialigue)
+    id = new_dialigue.inserted_id
     return id
