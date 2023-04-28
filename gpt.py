@@ -29,3 +29,17 @@ def CreateTitle(question, answer):
         presence_penalty=0
     )
     return response.choices[0].text
+
+def GetAgataResponse(prompt):
+    response = openai.Completion.create(
+        pre_promt=
+        "Agata: Donde esta la capital de francia?",
+        model="davinci",
+        prompt=prompt,
+        max_tokens=1000,
+        temperature=0,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0
+    )
+    return response.choices[0].text

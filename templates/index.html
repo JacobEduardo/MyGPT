@@ -1,4 +1,4 @@
-{% extends "head.html" %}
+{% extends "base.html" %}
 
 {% block body %}
 <style>
@@ -14,30 +14,36 @@
         flex-basis: 80%;
     }
 </style>
-
-<div>   <a href="\">Titulo</a><br></div>
 <div class="parent">
-    <div class="child_one" style="padding: 10px;">
+    <div class="child_one" style="padding: 10px; font-size:small;">
+        <div id="list-example " class="list-group">
         {% for element in conversations %}
-        <a href="\conversation?id={{element._id}} ">{{element.name}}</a><br>
+            <a class="list-group-item list-group-item-action" href="\conversation?id={{element._id}} ">{{element.name}}</a>
     {% endfor  %}
+</div>
     </div>
-    <div class="child_two" style="padding: 10px;">
-        <b>Conversación</b>
+    <div class="child_two" style="padding: 10px; margin: 10px; font-size:small; background-color: #ffffff;">
         {% if conversation %}
-                {% for element2 in conversation.dialogue %}
-                    <p>{{element2.question}}</p>
-                    <p>{{element2.answer}}</p>
-                {% endfor %}
+        <h4><b>{{conversation.name}}</b></h4>
+        {% else %}
+            <h4><b>iniciar nueva conversacion</b></h4>
+        {% endif %}
+        {% if conversation %}
+            {% for element2 in conversation.dialogue %}
+                <b><p>{{element2.question}}</p></b>
+                <p>{{element2.answer}}</p>
+            {% endfor %}
         {% endif %}
         <form action="/conversation" method="post">
-            <input type="text" name="question" style="width: 100%; height: 100px;"><br>
-            {% if conversation %}
-            <input type="hidden" id="acticuloId" name=id value="{{ conversation._id }}">
-            {% else %}
-            <input type="hidden" id="acticuloId" name=id value="none">
-            {% endif %}
-            <input type="submit" value="Enviar">
+            <div class="form-group">
+                <textarea class="form-control" name="question" rows="3" style="font-size: small;"></textarea>
+                {% if conversation %}
+                <input type="hidden" id="acticuloId" name=id value="{{ conversation._id }}">
+                {% else %}
+                <input type="hidden" id="acticuloId" name=id value="none">
+                {% endif %}
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+            </div>
         </form>
     </div>
 </div>
