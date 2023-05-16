@@ -30,8 +30,8 @@
         {% endif %}
         {% if conversation %}
             {% for element2 in conversation.dialogue %}
-                <b><p>{{element2.question}}</p></b>
-                <p>{{element2.answer}}</p>
+                <b><p>{{element2.question|safe}}</p></b>
+                <p>{{element2.answer|safe}}</p>
             {% endfor %}
         {% endif %}
         <form action="/{{form_action}} " method="post">
