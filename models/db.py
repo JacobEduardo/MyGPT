@@ -8,7 +8,10 @@ load_dotenv()
 uri = os.getenv('MONGO_URL')
 client = MongoClient(uri, server_api=ServerApi('1'))
 db = client["MyDbGpt"]
-collection = db["Gpt"]
 
-def GetCollection():
-    return collection
+def GetCollection(CollectionName): 
+    if CollectionName in db.list_collection_names():
+        return db[CollectionName]
+    else:
+        db.create_collection(CollectionName)
+        return db[CollectionName]

@@ -18,7 +18,7 @@
     <div class="child_one" style="padding: 10px; font-size:small;">
         <div id="list-example " class="list-group">
         {% for element in conversations %}
-            <a class="list-group-item list-group-item-action" href="\conversation?id={{element._id}} ">{{element.name}}</a>
+            <a class="list-group-item list-group-item-action" href="\{{form_action}}?id={{element._id}} ">{{element.name}}</a>
     {% endfor  %}
 </div>
     </div>
@@ -34,7 +34,7 @@
                 <p>{{element2.answer}}</p>
             {% endfor %}
         {% endif %}
-        <form action="/conversation" method="post">
+        <form action="/{{form_action}} " method="post">
             <div class="form-group">
                 <textarea class="form-control" name="question" rows="3" style="font-size: small;"></textarea>
                 {% if conversation %}

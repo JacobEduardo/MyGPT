@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify, render_template
 from gpt import GetResponseGpt, CreateTitle
-from models.get import GetConversations, GetConversation
+from models.get import GetConversationsInfo, GetConversation
 from models.post import UpdateDialogue, CreateDialogue
 conversation_blueprint = Blueprint('/conversation', __name__)
 
@@ -8,9 +8,9 @@ conversation_blueprint = Blueprint('/conversation', __name__)
 def GetResponse():
     try :
         id = request.args.get('id')
-        conversations = GetConversations()
+        conversations = GetConversationsInfo()
         conversation = GetConversation(id)
-        return render_template('index.html', conversations=conversations, conversation=conversation)   
+        return render_template('index.html', conversations=conversations, conversation=conversation, form_action="conversation")   
     except Exception as e:
         return jsonify({'error': str(e)})
     
@@ -21,20 +21,23 @@ def PostResponse():
         id = request.form.get('id')
         if id=="none":
             if question == "":
-                conversations = GetConversations()
-                return render_template('index.html', conversations=conversations) 
+                conversations = GetConversationsInfo()
+                return render_template('index.html', conversations=conversations,form_action="conversation" ) 
             answer = GetResponseGpt(question)
             title = CreateTitle(question,answer)
-            id = CreateDialogue(title,question,answer)
-            conversations = GetConversations()
+            collection_name = "Gpt"
+            id = CreateDialogue(title,question,answer,collection_name)
+            conversations = GetConversationsInfo()
             conversation = GetConversation(id)
-            return render_template('index.html', conversations=conversations , conversation=conversation) 
+            return render_template('index.html', conversations=conversations , conversation=conversation,form_action="conversation" ) 
         else:
             answer = GetResponseGpt(question)
-            UpdateDialogue(id,question,answer)
+            collection_name = "Gpt"
+            UpdateDialogue(id,question,answer,collection_name)
+            conversations = GetConversationsInfo()
             conversation = GetConversation(id)
-            conversations = GetConversations()
-            return render_template('index.html', conversations=conversations, conversation=conversation) 
+            return render_template('index.html', conversations=conversations, conversation=conversation,form_action="conversation" ) 
     except Exception as e:
         return jsonify({'error': str(e)})
+    
     
