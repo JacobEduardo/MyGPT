@@ -5,6 +5,7 @@ from models.post import UpdateDialogue, CreateDialogue
 ada_blueprint = Blueprint('/ada', __name__)
 
 collection = "Ada"
+#
 base = "La siguientes preguntas seran sobre programcion, por favor encierra entre etiquetas <pre><code></code></pre> cuando escribas codigo de culquier lenjuaje.\n"
 training = """
     Yo:¿Como se hace un bucle for en java?\n
@@ -35,7 +36,7 @@ def GetAdaResponse():
         
         if id=="none":
             if question == "":
-                conversations = GetConversationsInfo(collection)
+                conversations =  (collection)
                 return render_template('index.html', conversations=conversations,form_action="ada" )
             full_question = base + training + "\nTu:"
             answer = GetResponseGpt(full_question)
@@ -46,7 +47,7 @@ def GetAdaResponse():
             return render_template('index.html', conversations=conversations , conversation=conversation,form_action="ada" ) 
         else:
             conversation = GetConversation(id,collection)
-            answer = GetResponseGptWithContext(question , conversation)
+            answer = GetResponseGptWithContext(question, conversation, collection)
             UpdateDialogue(id,question,answer,collection)
             conversations = GetConversationsInfo(collection)
             conversation = GetConversation(id,collection)
