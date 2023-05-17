@@ -3,16 +3,19 @@ from datetime import datetime
 from bson.objectid import ObjectId
 from gpt import GetResponseGpt
 
-def UpdateDialogue(id, question, answer, collection):
+def UpdateDialogue(id, question, answer, collection, resume):
     conversation = GetCollection(collection)
     question = question
-    answer = answer.strip()
+    answer = answer
     myquery = {"_id": ObjectId(id)}
-    newvalues = { "$push": {"dialogue": {"question": question, "answer": answer}}}
+    newvalues = {
+    "$push": {"dialogue": {"question": question, "answer": answer}},
+    "$set": {"resume": resume}
+}
     conversation.update_one(myquery, newvalues)
 
-def CreateDialogue(title, question, answer, collection, base, training, resume= "none"):
-    answer = answer.strip()
+def CreateDialogue(title, question, answer, collection, base="", training="", resume=""):
+    answer = answer
     conversation = GetCollection(collection)
     new_dialigue = conversation.insert_one({
         "name":title,
@@ -20,10 +23,11 @@ def CreateDialogue(title, question, answer, collection, base, training, resume= 
             "question":question,
             "answer":answer
             }],
-        "resume": resume,
+        "resume": str(resume),
         "base": base,
         "training": training,
         "data": datetime.now()
         })
     id = new_dialigue.inserted_id
+    print(base)
     return id
