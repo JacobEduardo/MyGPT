@@ -1,0 +1,181 @@
+.parent {
+    display: flex;
+}
+
+.child_one {
+    flex-basis: 20%;
+}
+
+.child_two {
+    flex-basis: 80%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto+Sans+Nag+Mundari', sans-serif;
+    font-size: smaller;
+}
+
+.navbar {
+    top: 0;
+    width: 100%;
+    height: 40px;
+    background: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+}
+
+.navbar_title {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding-left: 8px;
+}
+
+.child_one {
+    background-color: #eee;
+    width: 200px;
+    height: calc(100vh - 40px);
+    overflow-y: scroll;
+    /* Add the ability to scroll */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.child_one::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.child_one {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.child_two {
+    background-color: #eee;
+    width: 200px;
+    height: calc(100vh - 160px);
+    overflow-y: scroll;
+    /* Add the ability to scroll */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.child_two::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.child_two {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+a {
+    text-decoration: none;
+}
+
+.sidebar {
+    background-image: linear-gradient(to bottom, #333044,#214660, #103036);
+    padding-top: 8px;
+    padding-bottom: 14px;
+}
+.sidebar_item {
+    padding: 10px 15px 5px 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    color: #cfcdcd;
+    font-size: 12px;
+}
+.sidebar_item:hover {
+    padding: 10px 15px 5px 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    color: rgb(2, 2, 2);
+    font-size: 12px;
+    background-color: rgb(255, 255, 255);
+}
+.content{
+    background-color: #eee;
+    padding: 10px;
+}
+
+.material-symbols-outlined {
+    font-size: 8px; 
+  }
+
+
+
+
+
+
+
+
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 11px;
+    font-size: 16px;
+    width: 160px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: auto;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100;
+    width: 100%;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+  }
+
+  .child_three {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 80%;
+  background-color: #d7d7d7;
+  height: 120px;
+}
+
+.from_{
+    padding: 10px;
+}
+.from_ textarea{
+    font-size: small;
+    width: 99%;
+    height: 60px;
+}

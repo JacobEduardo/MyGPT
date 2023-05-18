@@ -1,48 +1,51 @@
 {% extends "base.html" %}
-
 {% block body %}
-<style>
-    .parent {
-        display: flex;
-    }
-
-    .child_one {
-        flex-basis: 20%;
-    }
-
-    .child_two {
-        flex-basis: 80%;
-    }
-</style>
 <div class="parent">
-    <div class="child_one" style="padding: 10px; font-size:small;">
-        <div >
-        {% for element in conversations %}
-            <a href="\{{form_action}}?id={{element._id}} ">{{element.name}}</a> <br>
-    {% endfor  %}
-</div>
+    <div class="child_one">
+        <div class="sidebar">
+                {% for element in conversations %}
+                <div class="sidebar_item" onclick="link('/{{form_action}}?id={{element._id}} ')">
+                    <span class="material-symbols-outlined" style="font-size: 11px; margin-right: 4px;">
+                        forum
+                        </span>
+                    {{element.name}}
+                </div>
+                {% endfor %}
+            <script>
+                function link(link) {
+                    window.location.href = link;
+                }
+            </script>
+
+        </div>
     </div>
-    <div class="child_two" style="padding: 10px; margin: 10px; font-size:small; background-color: #ffffff;">
-        {% if conversation %}
-        <h4><b>{{conversation.name}}</b></h4>
-        {% else %}
+    <div class="child_two">
+        <div class="content">
+            {% if conversation %}
+            <h4><b>{{conversation.name}}</b></h4>
+            {% else %}
             <h4><b>iniciar nueva conversacion</b></h4>
-        {% endif %}
-        {% if conversation %}
+            {% endif %}
+            {% if conversation %}
             {% for element2 in conversation.dialogue %}
-                <b><p>{{element2.question|safe}}</p></b>
-                <p>{{element2.answer|safe}}</p>
+            <b>
+                <p>{{element2.question|safe}}</p>
+            </b>
+            <p>{{element2.answer|safe}}</p>
             {% endfor %}
-        {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="child_three">
         <form action="/{{form_action}} " method="post">
-            <div >
-                <textarea name="question" rows="3" style="font-size: small;"></textarea>
+            <div class="from_">
+                <textarea class="from_textarea" name="question" style="font-size: small;"></textarea>
                 {% if conversation %}
                 <input type="hidden" id="acticuloId" name=id value="{{ conversation._id }}">
                 {% else %}
                 <input type="hidden" id="acticuloId" name=id value="none">
                 {% endif %}
-                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+                <button type="submit" style="margin-top: 10px;">Submit</button>
             </div>
         </form>
     </div>
