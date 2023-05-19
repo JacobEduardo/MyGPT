@@ -22,15 +22,13 @@
     <div class="child_two">
         <div class="content">
             {% if conversation %}
-            <h4><b>{{conversation.name}}</b></h4>
+            <h4 class="title">{{conversation.name}}</h4>
             {% else %}
-            <h4><b>iniciar nueva conversacion</b></h4>
+            <h4 class="title">iniciar nueva conversacion</h4>
             {% endif %}
             {% if conversation %}
             {% for element2 in conversation.dialogue %}
-            <b>
-                <p>{{element2.question|safe}}</p>
-            </b>
+            <p class="question">{{element2.question|safe}}</p>
             <p>{{element2.answer|safe}}</p>
             {% endfor %}
             {% endif %}

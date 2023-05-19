@@ -27,7 +27,7 @@ body {
 }
 
 .navbar_title {
-    color: white;
+    color: #934c4c;
     font-weight: bold;
     text-decoration: none;
     padding-left: 8px;
@@ -52,14 +52,17 @@ body {
     /* IE and Edge */
     scrollbar-width: none;
     /* Firefox */
+    border-right: 1px solid #3a3737;
 }
 
 .child_two {
-    background-color: #eee;
     width: 200px;
     height: calc(100vh - 160px);
     overflow-y: scroll;
     /* Add the ability to scroll */
+    background: #1d2021;
+    color: #c1bfbd;
+    font-family: inherit;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -80,9 +83,10 @@ a {
 }
 
 .sidebar {
-    background-image: linear-gradient(to bottom, #333044,#214660, #103036);
     padding-top: 8px;
     padding-bottom: 14px;
+    background: #1d2021;
+    border-right: 1px solid #3a3737;
 }
 .sidebar_item {
     padding: 10px 15px 5px 15px;
@@ -92,6 +96,7 @@ a {
     cursor: pointer;
     color: #cfcdcd;
     font-size: 12px;
+    color: #9b9797;
 }
 .sidebar_item:hover {
     padding: 10px 15px 5px 15px;
@@ -99,30 +104,32 @@ a {
     overflow: hidden;
     text-overflow: ellipsis;
     cursor: pointer;
-    color: rgb(2, 2, 2);
+    color: #eeeeee;
     font-size: 12px;
-    background-color: rgb(255, 255, 255);
+    background: #292d2e;
 }
 .content{
-    background-color: #eee;
     padding: 10px;
 }
 
 .material-symbols-outlined {
     font-size: 8px; 
-  }
+}
 
 
+.question{
+    color: cadetblue;
+}
 
-
-
-
+.title{
+    color: lightslategrey;
+}
 
 
 
 .dropbtn {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #356037;
+    color: #c0c5c2;
     padding: 11px;
     font-size: 16px;
     width: 160px;
@@ -139,27 +146,30 @@ a {
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: #242424;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 100;
     width: 100%;
   }
   
   .dropdown-content a {
-    color: black;
+    color: rgb(175, 175, 175);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
   }
   
-  .dropdown-content a:hover {background-color: #f1f1f1}
+  .dropdown-content a:hover {
+    color: rgb(216, 216, 216);
+    background-color: #3a3a3a;
+}
   
   .dropdown:hover .dropdown-content {
     display: block;
   }
   
   .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+    background-color: #427745;
   }
 
   .child_three {
@@ -167,7 +177,7 @@ a {
   bottom: 0;
   right: 0;
   width: 80%;
-  background-color: #d7d7d7;
+  background-color: #1d2021;
   height: 120px;
 }
 
@@ -175,7 +185,13 @@ a {
     padding: 10px;
 }
 .from_ textarea{
-    font-size: small;
     width: 99%;
-    height: 60px;
+    height: 56px;
+    resize: none;
+    border: none;
+    background-color: #2c3031;
+    color: #3e8e41;
+    outline: none;
+    border-radius: 4px;
+    padding: 4px;
 }
