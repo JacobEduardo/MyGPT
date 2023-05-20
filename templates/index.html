@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block body %}
 <div class="parent">
-    <div class="child_one">
+    <div class="child_one" id="child_one">
         <div class="sidebar">
                 {% for element in conversations %}
                 <div class="sidebar_item" onclick="link('/{{form_action}}?id={{element._id}} ')">
@@ -19,7 +19,7 @@
 
         </div>
     </div>
-    <div class="child_two">
+    <div class="child_two" id="child_two">
         <div class="content">
             {% if conversation %}
             <h4 class="title">{{conversation.name}}</h4>
@@ -34,7 +34,7 @@
             {% endif %}
         </div>
     </div>
-    <div class="child_three">
+    <div class="child_three" id="child_three">
         <form action="/{{form_action}} " method="post">
             <div class="from_">
                 <textarea class="from_textarea" name="question" style="font-size: small;"></textarea>

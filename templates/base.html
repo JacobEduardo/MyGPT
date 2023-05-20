@@ -8,10 +8,14 @@
   <link rel="stylesheet" href="/static/css/my_style.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Nag+Mundari&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 
 <body>
   <div class="navbar">
+    <button class="sidebar_button" onclick="hide()"><span class="material-symbols-outlined">
+      format_align_justify
+      </span></button>
     <a class="navbar_title" href="/">GPT Plus Ultra Max</a>
     <div class="dropdown navbar_menu">
       <button class="dropbtn ">Characters</button>
@@ -23,11 +27,26 @@
   </div>
   {% block body %}
   {% endblock %}
-
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/androidstudio.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
   <script>hljs.highlightAll();</script>
-
-</body>
+  <script>
+    function hide() {
+      var elem2 = document.getElementById('child_two');
+      var elem = document.getElementById('child_one'); // elemento a ocultar/mostrar
+      var elem3 = document.getElementById('child_three')
+      if (elem.style.display === 'none') { // si está oculto, se muestra
+        elem.style.display = 'block';
+        elem2.style.flexBasis = '80%';
+        elem3.style.width = '80%';
+      } else { // si está visible, se oculta
+        elem.style.display = 'none';
+        elem2.style.flexBasis = '100%';
+        elem3.style.width = '100%';
+      }
+    }
+  </script>
+  </body>
 
 </html>
